@@ -1,0 +1,170 @@
+/* STARTING THE DEFAULT VIEW */
+/* Step 1 - Animation */
+@keyframes superslick{
+    /* Starts at a width of 25px and an opacity of 0 */
+    0% {width: 25px; opacity: 0;}
+    /* Ends with a width of 475px and an opacity of 1 */
+    100% {width: 475px; opacity: 1}
+}
+
+/* Calling the animation only on the logo for 5 seconds, 1 time */
+header>img{
+    animation: superslick 5s 1
+}
+
+/* Step 2 - Styling the body */
+body{
+    font-family: 'Poppins', serif;
+    background-image: url('../images/concrete_seamless.png');
+    background-color: #f1f1f1;
+}
+
+/* Step 3 - Using Flex to change the layout of the header */
+header{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Step 4 - Using Flex to change the layout of the links */
+.nav_links{
+    display: flex;
+    flex-direction: column;
+}
+
+/* Step 5 - Link color stays the same after being visited */
+.nav_links:visited{
+    text-decoration: none;
+}
+
+/* Step 6 - Styling the 3 large package cards */
+.card>header{
+    background-color: #288088;
+    border: solid 2px #45ADAD;
+    padding: 20px 0px 20px 0px;
+    border-radius: 50px 50px 0px 0px;
+}
+
+
+/* Step 7 */
+.card{
+    /* Need to fix the rounded borders from Step 6 */
+    border-radius: 50px 50px 0px 0px;
+    /* All cards need to have same width */
+    flex-basis: 450px; 
+    flex-direction: row;
+}
+
+/* Step 8 - Getting correct positioning for the package cards */
+.pricing{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Step 9 - Styling the gallery images */
+.gallery img{
+    display: flex;
+    border: solid 10px #50C7C7;
+    margin: 10px;
+    width: 300px;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+/* Step 10 - Needed to change the layout of the gallery images using flex */
+.gallery{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* STARTING THE DESKTOP VIEW */
+/* Styling will only show when screen size is greater than 900px */
+@media screen and (min-width: 900px){
+
+    /* Step 11 - Overriding earlier styling */
+    /* Instead of logo and links being centered, they are spread out */
+    header{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .nav_links{
+        flex-direction: row;
+    } 
+
+    /* Step 12 - Overriding earlier styling */
+    /* Cards will be side by side rather than stacked */
+    .card{
+        flex-basis: 275px;
+    }
+
+    .pricing{
+        align-items: center;
+    }
+
+    /* Step 13 - Styling only the first header */
+    /* Sticky position will make it stay in one place the entire time */
+    body>header:first-of-type{
+        position: sticky;
+        top: 0;
+    }
+}
+
+/* STARTING THE REDUCED MOTION MODIFICATIONS */
+@media screen and (prefers-reduced-motion: reduce){
+    /* Step 14 - Logo will not have animation */
+    header>img{
+        animation: none;
+    }
+}
+
+/* STARTING THE PRINT VIEW */
+@media print{
+
+    body{
+        /* Step 15 - Overriding earlier fonts */
+        font-family: Arial, Helvetica;
+        /* Step 16 - Getting rid of the background image */
+        background-image: none;
+    }
+
+    /* Step 17 -  Want links to be displayed horizontally instead of stacked */
+    /* Need to make the width of nav bigger so that links have room to spread */
+    nav{
+        width: 100%;
+    }
+
+    /* Spreads links out instead of centering them */
+    .nav_links{
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    /* Step 18 - Price cards need to align on bottom */
+    .pricing{
+        flex-wrap: nowrap;
+        align-items: flex-end;
+    }
+
+    /* Step 19 - Overriding previous styling for the card class */
+    .card{
+        border: solid 2px #45ADDD;
+        flex-basis: 325px;
+    }
+
+    /* Step 20 - Making the gallery title and gallery itself invisible */
+    #gallery, .gallery{
+        display: none;
+    }
+
+    /* Step 21 - Adding thumbs up */
+    /* Selecting the second list element within each card */
+    .card li:nth-child(2):after{
+        /* Code for the thumbs up emoji */
+        content: "\1F44D"
+    }
+
+}
