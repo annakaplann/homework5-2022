@@ -30,12 +30,10 @@ header{
 .nav_links{
     display: flex;
     flex-direction: column;
-    color: blue;
-    text-decoration: none;
 }
 
 /* Step 5 - Link color stays the same after being visited */
-.nav_links:visited{
+.nav_item a:visited{
     color: blue;
     text-decoration: none;
 }
